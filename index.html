@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT PROJJECT</title>
+
+    <!-- Les librairie react -->
+    <script src="assets/JS/react.development.js"></script>
+    <script src="assets/JS/react-dom.development.js"></script>
+
+    <!-- Librairie Babel -->
+    <script src="assets/JS/babel.min.js"></script>
+
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // en Procédurale
+        // const Hello = (props) => {
+        //     return (
+        //         <div className="heading">
+        //             <h1>{props.message}</h1>
+        //             <p>{props.subtitle}</p>
+        //         </div>
+        //     )
+        // }
+        // rendu dans la DOM
+        // ReactDOM.render(
+        //     <Hello message = "Ceci est du React" subtitle = "Voici le titre en React" />,
+        //     document.getElementById('root')
+        // );
+
+        // const Tableau = (props) => {
+        //     const elems = ['a', 'b', 'c'];
+        //     return (
+        //         <div className="heading">
+        //             {elems.map((elem, i) => {
+        //                 return(
+        //                     <p key={i}>{elem}</p>
+        //                 )
+        //             })}
+        //         </div>
+        //     )
+        // }
+        // // rendu dans la DOM
+        // ReactDOM.render(
+        //     <Tableau />,
+        //     document.getElementById('root')
+        // );
+
+        // en POO
+        // class Hello extends React.Component {
+        //     render()
+        //     {
+        //         // lecture seule pour les props
+        //         // this.props.message = "Hello Angular";
+
+        //         return (
+        //             <div className="heading">
+        //                 <h1>{this.props.message}</h1>
+        //                 <p>{this.props.subtitle}</p>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // // rendu dans la DOM
+        // ReactDOM.render(
+        //     <Hello message="Hello React POO" subtitle="Enjoy !" />,
+        //     document.getElementById('root')
+        // );
+
+        // class App extends React.Component 
+        // {
+        //     constructor(props)
+        //     {
+        //         super(props);
+        //         this.state = {
+        //             message: [
+        //                 "Message 1",
+        //                 "Message 2",
+        //                 "Message 3"
+        //             ]
+        //         }
+        //     }
+
+        //     render()
+        //     {
+        //         return (
+        //             <div>
+        //                 <Messages value={this.state.message} />   
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // class Messages extends React.Component
+        // {
+        //     render()
+        //     {
+        //         return (
+        //             this.props.value.map((element, index) => {
+        //                 return <button className= "messages" key={index}>{element}</button>;
+        //             })
+        //         )
+        //     }
+        // }
+        // // rendu dans la DOM
+        // ReactDOM.render(
+        //     <App />,
+        //     document.getElementById('root')
+        // );
+    </script>
+</body>
+</html>
