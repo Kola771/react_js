@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice2 | React</title>
+    
+    <!-- Les librairie react -->
+    <script src="assets/JS/react.development.js"></script>
+    <script src="assets/JS/react-dom.development.js"></script>
+
+    <!-- Librairie Babel -->
+    <script src="assets/JS/babel.min.js"></script>
+
+    <style>
+        body
+        {
+            background-color: #333;
+            color: white;
+        }
+
+        .card 
+        {
+            max-width: 20%;
+            margin: 15% auto;
+            border: 1px solid white;
+            border-radius: .5em;
+            padding: .8em;
+        }
+
+        .orangepur
+        {
+            color: #f50;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function tick() {
+        const Horlorge = () => {
+            return (
+                <div className="card">
+                <h1>Hey!! Voici l'heure actuelle 👌</h1>
+                <h2>It is <span className="orangepur">{new Date().toLocaleTimeString()}</span>.</h2>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <Horlorge/>,
+            document.getElementById('root')
+        );
+        }
+
+    setInterval(tick, 1000);
+    </script>
+</body>
+</html>
