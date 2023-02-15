@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Les librairie react -->
+     <script src="assets/JS/react.development.js"></script>
+     <script src="assets/JS/react-dom.development.js"></script>
+ 
+     <!-- Librairie Babel -->
+     <script src="assets/JS/babel.min.js"></script>
+ 
+    <title>Delete | React_js</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+       class Container extends React.Component
+       {
+           constructor(props)
+           {
+            super(props);
+            this.state = 
+                {show: true};
+           }
+
+           delHeader = () => {
+                this.setState({
+                    show: false
+                });
+           }
+
+           render()
+           {
+                let myheader;
+                if (this.state.show)
+                {
+                    myheader = <Child />;
+                };
+                return (
+                    <div>
+                        {myheader}
+                        <button 
+                            type="button"
+                            onClick={this.delHeader}>
+                            Delete Header
+                        </button>    
+                    </div>
+                );
+           }
+       }
+
+       class Child extends React.Component 
+       {
+            componentWillUnmount()
+            {
+                alert("Vous avez supprimé l'entête.");
+            }
+
+            render()
+            {
+                return (
+                    <h1>Hello World!</h1>
+                )
+            }
+       }
+
+        ReactDOM.render(
+            <Container />,
+            document.getElementById('root')
+        );
+
+    </script>
+</body>
+</html>

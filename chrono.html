@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Les librairie react -->
+     <script src="assets/JS/react.development.js"></script>
+     <script src="assets/JS/react-dom.development.js"></script>
+ 
+     <!-- Librairie Babel -->
+     <script src="assets/JS/babel.min.js"></script>
+ 
+    <title>Chronomètre | React_js(POO)</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+       class Chronometre extends React.Component
+       {
+            constructor(props)
+            {
+                super(props);
+                this.state = 
+                {
+                    second: 0,
+                    minutes: 0,
+                    hours: 0
+                };
+            }
+
+            componentDidMount()
+            {
+                setInterval(
+                    () => this.chrono(),
+                    1000
+                );
+            }
+
+            chrono()
+            {
+                this.setState({
+                    second: this.state.second + 1
+                });
+            }
+
+            render()
+            {
+                if(this.state.second === 60) 
+                {
+                    this.setState({
+                        second: 0,
+                        minutes: this.state.minutes + 1
+                    });
+                 }
+
+                 if(this.state.minutes === 60)
+                 {
+                    this.setState({
+                        minutes: 0,
+                        hours: this.state.hours + 1
+                    })
+                 }
+
+                 if(this.state.hours === 24)
+                 {
+                    this.setState({
+                        second: 0,
+                        minutes: 0,
+                        hours: 0
+                    })
+                 }
+
+                return (
+                    
+                    <div>
+                        <p>Chronomètre : {this.state.hours}h : {this.state.minutes}min : {this.state.second}s</p>
+                    </div>
+                )
+            }
+       }
+
+        ReactDOM.render(
+            <Chronometre />,
+            document.getElementById('root')
+        );
+
+    </script>
+</body>
+</html>

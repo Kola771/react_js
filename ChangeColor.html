@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeColor | React_js</title>
+    <!-- Les librairie react -->
+    <script src="assets/JS/react.development.js"></script>
+    <script src="assets/JS/react-dom.development.js"></script>
+
+    <!-- Librairie Babel -->
+    <script src="assets/JS/babel.min.js"></script>
+
+    <style>
+        .classColorRed
+        {
+            color: red;
+        }
+
+        .classColorBlue
+        {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Car extends React.Component 
+        {
+            constructor(props)
+            {
+                super(props);
+                this.state = {
+                    brand: "Ford",
+                    model: "Mustang",
+                    color: "red",
+                    year: 1964,
+                    classColor: "classColorRed"
+                };
+            }
+
+            changeColor = () => {
+                this.setState({
+                    color: "blue",
+                    classColor: "classColorBlue"
+                });
+            }
+
+            render()
+            {
+                return (
+                    <div>
+                        <h1>My {this.state.brand}</h1>
+                        <p className={this.state.classColor}>
+                            It is a {this.state.color} {this.state.model} from {this.state.year}.    
+                        </p> 
+                        <button 
+                            type="button"
+                            onClick={this.changeColor}
+                        >
+                            Change color
+                        </button>   
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <Car />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
