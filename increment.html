@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etoiles | React_JS (POO)</title>
+    <!-- Les librairie react -->
+    <script src="assets/JS/react.development.js"></script>
+    <script src="assets/JS/react-dom.development.js"></script>
+
+    <!-- Librairie Babel -->
+    <script src="assets/JS/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Increment extends React.Component 
+        {
+            constructor(props)
+            {
+                super(props);
+                this.state = {
+                    counter: 0,
+                    display: true
+                }
+                this.textOne = this.textOne.bind(this);
+                this.textTwo = this.textTwo.bind(this);
+                this.stopOne = this.stopOne.bind(this);
+                this.stopTwo = this.stopTwo.bind(this);
+                this.reset = this.reset.bind(this);
+            }
+
+            componentDidMount()
+            {
+                    
+            }
+
+            textOne()
+            {
+                this.setState(state  => ({
+                    display: !state.display,
+                    etat: "disabled"
+                }));
+
+                this.IntervalOne = setInterval(
+                    () => this.counterOne(),
+                    100
+                    );
+            }
+
+            counterOne()
+            {
+                this.setState({
+                    counter: this.state.counter + 1
+                });
+
+
+                if(this.state.counter == 20) {
+                    clearInterval(this.IntervalOne);
+                };
+            }
+
+            textTwo()
+            {
+                this.setState(state  => ({
+                    display: !state.display
+                }));
+
+                this.IntervalTwo = setInterval(
+                    () => this.counterTwo(),
+                    100
+                );
+            }
+
+            counterTwo()
+            {
+                this.setState({
+                    counter: this.state.counter + 2
+                });
+
+                if(this.state.counter == 20) {
+                    clearInterval(this.IntervalTwo);
+                };
+                
+            }
+
+            stopOne()
+            {
+                clearInterval(this.IntervalOne)
+            }
+
+            stopTwo()
+            {
+                clearInterval(this.IntervalTwo)
+            }
+
+            reset()
+            {
+                clearInterval(this.IntervalOne);
+                clearInterval(this.IntervalTwo);
+                this.setState(state  => ({
+                    counter: 0,
+                    display: !state.display
+                }));
+            }
+            
+            render()
+            {
+                return (
+                    <div>
+                        {this.state.display ? <button onClick={this.textOne}>Start(+1)</button> : <button disabled>Start(+1)</button>}
+
+                        <button onClick={this.stopOne}>Stop</button>
+                        <button onClick={this.reset}>Reset</button>
+                        <p>{this.state.counter}</p>
+
+                        {this.state.display ? <button onClick={this.textTwo}>Start(+2)</button> : <button disabled>Start(+2)</button>}
+                            
+                        <button onClick={this.stopTwo}>Stop</button>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Increment />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
