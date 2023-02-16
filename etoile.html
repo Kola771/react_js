@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etoiles | React_JS (POO)</title>
+    <!-- Les librairie react -->
+    <script src="assets/JS/react.development.js"></script>
+    <script src="assets/JS/react-dom.development.js"></script>
+
+    <!-- Librairie Babel -->
+    <script src="assets/JS/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Etoiles extends React.Component 
+        {
+            constructor(props)
+            {
+                super(props);
+                this.state = {
+                    comp: 0,
+                    tableau: 0
+                }
+            }
+
+            componentDidMount()
+            {
+                this.timeId = setInterval(
+                    () => this.Compteur(), 
+                    10
+                );
+            } 
+            
+           
+
+            componentDidUpdate(prevProps, prevState)
+            {
+
+                if(this.state.comp !== 0) {
+                    document.querySelector('span').innerHTML += "*"
+                }
+
+            }
+            
+            Compteur()
+            {
+                this.setState({
+                    comp: this.state.comp + 1
+                });
+                
+                if (this.state.comp == 40)
+                {
+                    document.querySelector('span').innerHTML += "<br>"
+                    this.setState({
+                        tableau: this.state.tableau + this.state.comp,
+                        comp: 0,
+                    });
+                }
+
+                if(this.state.tableau == 40*10) 
+                {
+                    clearInterval(this.timeId)
+                }
+            }
+            
+            render()
+            {
+              
+                return (
+                    <span>
+                    </span>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Etoiles />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
